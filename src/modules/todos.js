@@ -21,18 +21,7 @@ export const remove = createAction(REMOVE, (id) => id);
 
 const initialState = {
   input: '',
-  todos: [
-    {
-      id: 1,
-      text: '리덕스 기초 배우기',
-      done: true,
-    },
-    {
-      id: 2,
-      text: '리액트와 리덕스 사용하기',
-      done: false,
-    },
-  ],
+  todos: [],
 };
 
 const todos = handleActions(
