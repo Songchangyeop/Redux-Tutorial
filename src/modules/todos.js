@@ -12,7 +12,7 @@ export const insert = createAction(INSERT, (text) => ({
   id: id++,
   text,
   done: false,
-  // 위의 return된 값들이 Payload !!
+  // 위의 return된 값들이 Payload 된다!!
 }));
 
 export const toggle = createAction(TOGGLE, (id) => id);
