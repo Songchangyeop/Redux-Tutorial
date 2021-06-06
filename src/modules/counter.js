@@ -1,33 +1,31 @@
-import { createAction, handleActions } from 'redux-actions';
+import { createSlice } from '@reduxjs/toolkit';
 
-const INCREASE = 'counter/INCREASE';
-const DECREASE = 'counter/DECREASE';
+// const INCREASE = 'counter/INCREASE';
+// const DECREASE = 'counter/DECREASE';
 
-export const increase = createAction(INCREASE);
-export const decrease = createAction(DECREASE);
+// export const increase = createAction(INCREASE);
+// export const decrease = createAction(DECREASE);
 
-export const increaseAsync = () => (dispatch) => {
-  setTimeout(() => {
-    dispatch(increase());
-  }, 1000);
-};
+// const initialState = {
+//   number: 0,
+// };
 
-export const decreaseAsync = () => (dispatch) => {
-  setTimeout(() => {
-    dispatch(decrease());
-  }, 1000);
-};
+// const counter = createReducer(initialState, {
+//   [INCREASE]: (state, action) => ({ number: state.number + 1 }),
+//   [DECREASE]: (state, action) => ({ number: state.number - 1 }),
+// });
 
-const initialState = {
-  number: 0,
-};
-
-const counter = handleActions(
-  {
-    [INCREASE]: (state, action) => ({ number: state.number + 1 }),
-    [DECREASE]: (state, action) => ({ number: state.number - 1 }),
+const counter = createSlice({
+  name: 'counter',
+  initialState: {
+    number: 0,
   },
-  initialState
-);
+  reducers: {
+    increase: (state, action) => ({ number: state.number + 1 }),
+    decrease: (state, action) => ({ number: state.number - 1 }),
+  },
+});
 
-export default counter;
+export const { increase, decrease } = counter.actions;
+
+export default counter.reducer;

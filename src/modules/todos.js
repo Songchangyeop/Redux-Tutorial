@@ -1,4 +1,5 @@
-import { createAction, handleActions } from 'redux-actions';
+import { createReducer } from '@reduxjs/toolkit';
+import { createAction } from 'redux-actions';
 
 const CHANGE_INPUT = 'todos/CHANGE_INPUT'; //인풋 값 변경
 const INSERT = 'todos/INSERT'; // 새로운 todo 등록
@@ -24,25 +25,22 @@ const initialState = {
   todos: [],
 };
 
-const todos = handleActions(
-  {
-    [CHANGE_INPUT]: (state, { payload: input }) => ({ ...state, input }),
-    [INSERT]: (state, { payload: todo }) => ({
-      ...state,
-      todos: state.todos.concat(todo),
-    }),
-    [TOGGLE]: (state, { payload: id }) => ({
-      ...state,
-      todos: state.todos.map((todo) =>
-        todo.id === id ? { ...todo, done: !todo.done } : todo
-      ),
-    }),
-    [REMOVE]: (state, { payload: id }) => ({
-      ...state,
-      todos: state.todos.filter((todo) => todo.id !== id),
-    }),
-  },
-  initialState
-);
+const todos = createReducer(initialState, {
+  [CHANGE_INPUT]: (state, { payload: input }) => ({ ...state, input }),
+  [INSERT]: (state, { payload: todo }) => ({
+    ...state,
+    todos: state.todos.concat(todo),
+  }),
+  [TOGGLE]: (state, { payload: id }) => ({
+    ...state,
+    todos: state.todos.map((todo) =>
+      todo.id === id ? { ...todo, done: !todo.done } : todo
+    ),
+  }),
+  [REMOVE]: (state, { payload: id }) => ({
+    ...state,
+    todos: state.todos.filter((todo) => todo.id !== id),
+  }),
+});
 
 export default todos;

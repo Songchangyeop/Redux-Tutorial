@@ -1,9 +1,12 @@
-import SampleContainer from './containers/SampleContainer';
+import CounterContainer from './containers/CounterContainer';
+import TodosContainer from './containers/TodosContainer';
 
 function App() {
   return (
     <div className="App">
-      <SampleContainer />
+      <CounterContainer></CounterContainer>
+      <hr />
+      <TodosContainer></TodosContainer>
     </div>
   );
 }
