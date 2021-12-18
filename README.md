@@ -1,3 +1,5 @@
 ## Redux tutorial
 
-## Redux Toolkit 추가
+``` 
+Redux Tutorial or Redux Toolkit boiler-plate
+```
